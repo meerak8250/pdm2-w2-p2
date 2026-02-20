@@ -36,7 +36,6 @@ class Animal {
         this.#posY = Math.round(Math.random() * 500);
     }
 
-
     /**
      * Gets the animal's x coordinate
      * @returns {number}
@@ -108,6 +107,23 @@ class Animal {
     }
 }
 
+class Bird extends Animal {
+    #beakType;
+    #healthLevel;
+
+    constructor(beakType) {
+        this.#beakType = beakType;
+    }
+
+    getBeakType() {
+        return this.#beakType;
+    }
+
+    decreaseHealth() {
+        this.#healthLevel = Math.max(0, this.#healthLevel - 5);
+    }
+
+}
 
 /**
  * A subclass representing animals with fur
@@ -127,5 +143,27 @@ class FurryAnimal extends Animal {
      */
     getFurColour() {
         return this.#furColour;
+    }
+}
+class Cat extends FurryAnimal {
+    constructor() {
+
+    }
+    jumpAt(Bird) {
+
+    }
+    call() {
+        return "Meow";
+    }
+}
+
+class Dog extends FurryAnimal {
+    constructor() {
+
+    }
+    barkAt(Cat) {
+        if (this.getX() <= Cat.getX() + 5 && this.getX() >= Cat.getX() - 5 && this.getY() <= Cat.getY() + 5 && this.getY() >= Cat.getY() - 5) {
+            return "Woof";
+        }
     }
 }
